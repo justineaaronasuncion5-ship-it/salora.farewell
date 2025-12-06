@@ -1,0 +1,149 @@
+/* Shared animations and small UI tweaks */
+:root{
+  --accent:#d79a29;
+  --navbg:#2f4963;
+  --text:#2f4963;
+}
+
+/* Reveal on scroll */
+.animate-on-scroll{
+  opacity: 0;
+  transform: translateY(18px);
+  transition: opacity .6s ease-out, transform .6s ease-out;
+  will-change: opacity, transform;
+}
+.animate-on-scroll.in-view{
+  opacity: 1;
+  transform: none;
+}
+
+/* Gentle floating for decorative cards */
+@keyframes floatGentle{0%,100%{transform:translateY(0)}50%{transform:translateY(-6px)}}
+.float-slow{animation:floatGentle 4s ease-in-out infinite}
+
+/* Card hover */
+.card-hover{transition:transform .25s ease,box-shadow .25s ease}
+.card-hover:hover{transform:translateY(-8px);box-shadow:0 10px 25px rgba(0,0,0,0.12)}
+
+/* Input focus (contact form) */
+.form-input:focus,.form-textarea:focus{outline:none;border-color:var(--accent);box-shadow:0 6px 18px rgba(47,73,99,0.06)}
+
+/* Quick utility */
+.fade-in{opacity:0;animation:fadeIn .6s forwards}
+@keyframes fadeIn{to{opacity:1}}
+
+/* Small responsive tweak for nav when styles file loaded */
+.nav-container{background:var(--navbg)}
+
+/* Make sure map placeholder is responsive */
+.map-placeholder, .flower-image, .service-image, .theme-image, .obituary-photo{background-size:cover;background-position:center}
+
+/* Standardize navigation size across all pages */
+.nav-container{
+  height: 56px;
+}
+
+.main-nav{
+  display:flex;
+  align-items:center;
+  gap: 0.5rem;
+}
+
+.main-nav a{
+  color: #fff;
+  text-decoration: none;
+  padding: 0.4rem 0.9rem !important;
+  font-size: 0.9rem !important;
+  line-height: 1;
+  display: inline-block;
+  min-width: 48px;
+  text-align: center;
+}
+
+/* Smaller info-bar to match nav scale */
+.info-bar{
+  padding: 0.5rem 1rem !important;
+  font-size: 0.78rem !important;
+}
+
+/* Ensure hamburger sits vertically centered */
+.nav-toggle{
+  top: 8px !important;
+}
+
+/* Global alignment and container rules */
+.app-wrapper {
+  padding-top: 56px; /* leave space for fixed nav */
+}
+
+/* Ensure section children are centered and constrained */
+.section > * {
+  max-width: 1100px;
+  margin-left: auto;
+  margin-right: auto;
+  padding-left: 1rem;
+  padding-right: 1rem;
+  box-sizing: border-box;
+}
+
+.section {
+  padding-top: 3rem;
+  padding-bottom: 3rem;
+}
+
+.section-title {
+  text-align: center;
+  margin-bottom: 1rem;
+}
+
+/* Hero alignment */
+.hero-content {
+  max-width: 1000px;
+  margin-left: auto;
+  margin-right: auto;
+  padding-left: 1rem;
+  padding-right: 1rem;
+}
+
+/* Grids centered and constrained */
+.service-grid,
+.theme-grid,
+.flower-grid,
+.obituary-grid {
+  max-width: 1100px;
+  margin-left: auto;
+  margin-right: auto;
+  padding-left: 1rem;
+  padding-right: 1rem;
+}
+
+/* Standardize nav link sizing and vertical alignment */
+.main-nav a{
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  height: 40px;
+  padding: 0 12px !important;
+}
+
+/* Contact grid alignment */
+.contact-grid{
+  max-width: 1100px;
+  margin-left: auto;
+  margin-right: auto;
+  padding-left: 1rem;
+  padding-right: 1rem;
+}
+
+.map-placeholder iframe{
+  width: 100%;
+  height: 300px;
+  border: 0;
+  border-radius: 12px;
+}
+
+@media (max-width: 768px) {
+  .section { padding-top: 2rem; padding-bottom: 2rem; }
+  .main-nav a { height: 36px; font-size: 0.9rem; }
+  .app-wrapper { padding-top: 64px; }
+}

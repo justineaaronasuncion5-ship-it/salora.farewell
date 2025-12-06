@@ -1,0 +1,1149 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Solara Farewell</title>
+
+  <!-- Fonts similar to your PDF -->
+  <link href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Merriweather:wght@300;400;700&family=Playfair+Display:wght@400;600&display=swap" rel="stylesheet">
+
+  <style>
+    :root{
+      --nav-blue:#3a6082;
+      --gold:#d79a29;
+      --white:#ffffff;
+      --bg-blue:#2f4963;
+    }
+
+    *{margin:0;padding:0;box-sizing:border-box;}
+    html{scroll-behavior:smooth;}
+    body{
+      font-family:"Merriweather",serif;
+      background:#111;
+      color:var(--white);
+    }
+
+    /* 🟡 TIP:
+       Put ALL your images and videos in the SAME FOLDER as this HTML file.
+       Example folder:
+         - index.html
+         - herovid.mp4
+         - logo.png
+         - hero-bg.jpg
+         - services-hero.jpg
+         - burial-bg.jpg
+         - cremation-bg.jpg
+         - online-bg.jpg
+         - crem-theme1.jpg, crem-theme2.jpg, crem-theme3.jpg
+         - obit1.jpg, obit2.jpg, obit3.jpg, obit4.jpg
+         - grief-hero.jpg
+         - bloom1.jpg ... bloom5.jpg
+         - map-placeholder.jpg
+    */
+
+    /* ============ GLOBAL ANIMATIONS ============ */
+    @keyframes fadeUp {
+      from {opacity:0; transform:translateY(24px);}
+      to   {opacity:1; transform:translateY(0);}
+    }
+    @keyframes fadeIn {
+      from {opacity:0;}
+      to   {opacity:1;}
+    }
+    @keyframes cardFloat {
+      0%{transform:translateY(0);}
+      50%{transform:translateY(-6px);}
+      100%{transform:translateY(0);}
+    }
+
+    .section{
+      animation:fadeUp 0.9s ease-out both;
+    }
+
+    /* ============ NAVIGATION BAR (top) ============ */
+    .nav-bar{
+      background:#355c80;
+      padding:12px 20px;
+      display:flex;
+      justify-content:center;
+      position:sticky;
+      top:0;
+      z-index:50;
+    }
+    .nav-bar ul{
+      list-style:none;
+      display:flex;
+      flex-wrap:wrap;
+      gap:28px;
+      justify-content:center;
+    }
+    .nav-bar a{
+      text-decoration:none;
+      color:#e6edf5;
+      font-size:15px;
+      transition:0.25s ease;
+    }
+    .nav-bar a:hover{
+      color:var(--gold);
+    }
+
+    /* ============ INFO BAR ============ */
+    .topbar{
+      background:var(--nav-blue);
+      padding:10px 20px;
+      display:flex;
+      justify-content:center;
+    }
+    .topbar .row{
+      width:100%;
+      max-width:1200px;
+      display:flex;
+      justify-content:space-between;
+      flex-wrap:wrap;
+      gap:10px;
+      font-size:14px;
+    }
+    .info{
+      display:flex;
+      align-items:center;
+      gap:8px;
+    }
+
+    /* ============ HERO / PAGE 1 TOP ============ */
+    .hero{
+      position:relative;
+      min-height:90vh;
+      display:flex;
+      flex-direction:column;
+      align-items:center;
+      justify-content:center;
+      text-align:center;
+      overflow:hidden;
+      padding:40px 20px 60px;
+      background:#000;
+    }
+
+    /* HERO IMAGE (fallback if video fails) */
+    .hero::before{
+      content:"";
+      position:absolute;
+      inset:0;
+      background:url("hero-bg.jpg") center/cover no-repeat;
+      filter:brightness(0.25);
+      z-index:-3;
+    }
+
+    .hero::after{
+      content:"";
+      position:absolute;
+      inset:0;
+      background:rgba(0,0,0,0.4);
+      z-index:-1;
+    }
+
+    /* HERO VIDEO BACKGROUND */
+    .hero-video{
+      position:absolute;
+      inset:0;
+      width:100%;
+      height:100%;
+      object-fit:cover;
+      filter:brightness(0.25);
+      z-index:-2;
+    }
+
+    .hero-logo{
+      width:170px;
+      height:170px;
+      border-radius:50%;
+      border:4px solid rgba(255,255,255,0.3);
+      margin-bottom:20px;
+      overflow:hidden;
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      animation:fadeIn 1s ease-out 0.1s both;
+      background:rgba(0,0,0,0.3);
+      backdrop-filter:blur(2px);
+    }
+    .hero-logo img{
+      width:100%;
+      height:100%;
+      object-fit:cover;
+    }
+
+    .hero-title{
+      font-family:"Great Vibes",cursive;
+      font-size:80px;
+      color:var(--gold);
+      text-shadow:0 4px 12px rgba(0,0,0,0.8);
+      animation:fadeUp 1s ease-out 0.35s both;
+    }
+    .hero-subtitle{
+      font-size:22px;
+      font-style:italic;
+      margin-top:8px;
+      text-shadow:0 2px 8px rgba(0,0,0,0.8);
+      animation:fadeUp 1s ease-out 0.55s both;
+    }
+
+    /* ============ HISTORY / VISION / MISSION ============ */
+    .gold-bar{
+      width:100%;
+      height:24px;
+      background:var(--gold);
+    }
+    .history-section{
+      background:var(--bg-blue);
+      padding:60px 12% 70px;
+      text-align:center;
+    }
+    .history-section h2{
+      font-family:"Great Vibes",cursive;
+      font-size:60px;
+      color:var(--gold);
+      margin-bottom:20px;
+    }
+    .history-section p{
+      font-size:18px;
+      line-height:1.7;
+      text-align:justify;
+      margin-bottom:20px;
+    }
+    .history-section .subhead{
+      font-size:32px;
+      font-family:"Great Vibes",cursive;
+      color:var(--gold);
+      margin-top:30px;
+      margin-bottom:8px;
+    }
+    .divider{
+      width:200px;
+      height:4px;
+      margin:0 auto 24px;
+      border-radius:3px;
+      background:linear-gradient(to right,transparent,var(--gold),transparent);
+    }
+
+    /* ============ OUR SERVICES (page 2) ============ */
+
+    /* top banner for "Our Services" page (kept for structure, but simple) */
+    .services-hero{
+      background:url("services-hero.jpg") center/cover no-repeat;
+      min-height:260px;
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      position:relative;
+      margin-top:0;
+    }
+    .services-hero::before{
+      content:"";
+      position:absolute;
+      inset:0;
+      background:rgba(0,0,0,0.35);
+    }
+    .services-hero h2{
+      position:relative;
+      font-family:"Playfair Display",serif;
+      font-size:52px;
+      letter-spacing:6px;
+      text-transform:uppercase;
+    }
+
+    .services-strip{
+      background:var(--bg-blue);
+      padding:60px 6% 80px;
+    }
+
+    /* big section titles like in your screenshot */
+    .services-strip h3{
+      text-align:center;
+      font-family:"Playfair Display",serif;
+      font-size:54px;
+      letter-spacing:6px;
+      margin:40px 0 16px;
+      color:#f7f9fc;
+      text-transform:uppercase;
+    }
+
+    /* image band with three cards (made to look like your sample) */
+    .service-banner{
+      position:relative;
+      height:260px;
+      border-radius:24px;
+      overflow:hidden;
+      margin:0 auto 55px;
+      max-width:1200px;
+      box-shadow:0 24px 45px rgba(0,0,0,0.75);
+    }
+
+    .service-banner.burial{
+      background:url("burialserv.jpg") center/cover no-repeat;
+    }
+    .service-banner.cremation{
+      background:url("cremation-bg.jpg") center/cover no-repeat;
+    }
+    .service-banner.online{
+      background:url("online-bg.jpg") center/cover no-repeat;
+    }
+
+    .service-banner::before{
+      content:"";
+      position:absolute;
+      inset:0;
+      background:rgba(0,0,0,0.32); /* soft dark overlay like screenshot */
+    }
+
+    .service-card-row{
+      position:absolute;
+      inset:0;
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      gap:0;              /* cards snug side-by-side */
+      padding:0 6%;
+    }
+
+    .service-pill{
+      position:relative;
+      z-index:0;
+      width:33%;
+      max-width:360px;
+      padding:32px 34px;
+      text-align:center;
+
+      border-radius:42px;
+      background:rgba(0,0,0,0.78);
+      box-shadow:0 26px 50px rgba(0,0,0,0.9);
+
+      transform:translateY(0);
+      transition:
+        transform 0.25s ease,
+        box-shadow 0.25s ease,
+        background 0.25s ease;
+      animation:cardFloat 6s ease-in-out infinite;
+      animation-delay:var(--delay,0s);
+    }
+
+    /* small curve effect on middle card sides */
+    .service-pill:nth-child(2)::before,
+    .service-pill:nth-child(2)::after{
+      content:"";
+      position:absolute;
+      top:0;
+      bottom:0;
+      width:46px;
+      background:rgba(0,0,0,0.78);
+      box-shadow:0 26px 50px rgba(0,0,0,0.9);
+    }
+    .service-pill:nth-child(2)::before{
+      left:-23px;
+      border-radius:0 42px 42px 0;
+    }
+    .service-pill:nth-child(2)::after{
+      right:-23px;
+      border-radius:42px 0 0 42px;
+    }
+
+    .service-pill h4{
+      font-family:"Playfair Display",serif;
+      font-size:32px;
+      line-height:1.3;
+      letter-spacing:1px;
+    }
+
+    .service-pill:hover{
+      transform:translateY(-10px);
+      box-shadow:0 32px 60px rgba(0,0,0,0.95);
+      background:rgba(0,0,0,0.9);
+    }
+
+    /* ============ CREMATION THEMES & CASKETS (page 3) ============ */
+    .themes-section{
+      background:var(--bg-blue);
+      padding:60px 8% 60px;
+    }
+    .themes-section h2{
+      text-align:center;
+      font-family:"Playfair Display",serif;
+      font-size:40px;
+      letter-spacing:3px;
+      margin-bottom:30px;
+    }
+    .theme-row{
+      display:flex;
+      flex-wrap:wrap;
+      gap:20px;
+      justify-content:center;
+      margin-bottom:40px;
+    }
+    .theme-card{
+      width:320px;
+      height:140px;
+      border-radius:14px;
+      overflow:hidden;
+      position:relative;
+      background:#333;
+      box-shadow:0 10px 25px rgba(0,0,0,0.8);
+    }
+    .theme-card img{
+      width:100%;
+      height:100%;
+      object-fit:cover;
+      filter:brightness(0.85);
+      transition:0.3s;
+    }
+    .theme-card span{
+      position:absolute;
+      bottom:10px;
+      left:50%;
+      transform:translateX(-50%);
+      font-weight:bold;
+      text-shadow:0 2px 6px rgba(0,0,0,0.9);
+    }
+    .theme-card:hover img{
+      transform:scale(1.04);
+    }
+
+    .caskets-title{
+      text-align:center;
+      font-family:"Playfair Display",serif;
+      font-size:40px;
+      margin:20px 0 30px;
+    }
+    .casket-grid{
+      display:flex;
+      flex-wrap:wrap;
+      gap:24px;
+      justify-content:center;
+    }
+    .casket-card{
+      background:rgba(0,0,0,0.4);
+      border-radius:18px;
+      padding:20px 24px;
+      max-width:350px;
+      box-shadow:0 10px 25px rgba(0,0,0,0.8);
+      transition:0.3s;
+    }
+    .casket-card:hover{
+      transform:translateY(-6px);
+    }
+    .casket-card h3{
+      font-family:"Playfair Display",serif;
+      font-size:26px;
+      margin-bottom:6px;
+    }
+    .casket-card .price{
+      color:var(--gold);
+      margin-bottom:10px;
+      font-weight:bold;
+    }
+    .casket-card p{
+      font-size:14px;
+      line-height:1.6;
+      margin-bottom:8px;
+    }
+    .sizes{
+      font-size:13px;
+      margin-top:6px;
+    }
+
+    /* ============ OBITUARIES (page 4) ============ */
+    .obits-section{
+      background:var(--bg-blue);
+      padding:60px 8%;
+      text-align:center;
+    }
+    .obits-section h2{
+      font-family:"Great Vibes",cursive;
+      font-size:60px;
+      color:var(--gold);
+      margin-bottom:30px;
+    }
+    .obits-grid{
+      display:grid;
+      grid-template-columns:repeat(auto-fit,minmax(190px,1fr));
+      gap:24px;
+      max-width:1000px;
+      margin:0 auto;
+    }
+    .obit-card{
+      background:rgba(0,0,0,0.5);
+      border-radius:16px;
+      padding:16px;
+      box-shadow:0 10px 25px rgba(0,0,0,0.8);
+    }
+    .obit-photo{
+      width:100%;
+      height:170px;
+      border-radius:12px;
+      background:#333;
+      margin-bottom:10px;
+      overflow:hidden;
+    }
+    .obit-photo img{
+      width:100%;
+      height:100%;
+      object-fit:cover;
+    }
+    .obit-name{
+      font-weight:bold;
+      margin-bottom:4px;
+    }
+    .obit-dates{
+      font-size:14px;
+      line-height:1.4;
+    }
+
+    /* ============ GRIEF SUPPORT (page 5) ============ */
+    .grief-section{
+      background:var(--bg-blue);
+      padding-bottom:60px;
+    }
+
+    .grief-hero{
+      height:260px;
+      background:url("grief-hero.jpg") center/cover no-repeat;
+      position:relative;
+      display:flex;
+      align-items:center;
+      justify-content:center;
+    }
+    .grief-hero::before{
+      content:"";
+      position:absolute;
+      inset:0;
+      background:rgba(0,0,0,0.45);
+    }
+    .grief-hero h2{
+      position:relative;
+      font-family:"Playfair Display",serif;
+      font-size:46px;
+      letter-spacing:3px;
+    }
+    .grief-content{
+      padding:40px 10%;
+      text-align:center;
+    }
+    .grief-content h3{
+      font-family:"Great Vibes",cursive;
+      font-size:50px;
+      color:var(--gold);
+      margin-bottom:8px;
+    }
+    .grief-content p{
+      font-size:17px;
+      line-height:1.7;
+      margin-bottom:18px;
+      text-align:justify;
+    }
+    .grief-buttons{
+      display:flex;
+      flex-wrap:wrap;
+      gap:18px;
+      justify-content:center;
+      margin-top:22px;
+    }
+    .grief-btn{
+      background:#f5f5f5;
+      color:#222;
+      border-radius:30px;
+      padding:12px 28px;
+      font-size:14px;
+      display:flex;
+      align-items:center;
+      gap:8px;
+      cursor:pointer;
+      border:none;
+      box-shadow:0 10px 22px rgba(0,0,0,0.65);
+      transition:0.25s;
+    }
+    .grief-btn:hover{
+      transform:translateY(-4px);
+      box-shadow:0 14px 30px rgba(0,0,0,0.9);
+    }
+
+    /* ============ FAQ (page 6) ============ */
+    .faq-section{
+      background:var(--bg-blue);
+      padding:60px 8%;
+    }
+    .faq-block{
+      margin-bottom:50px;
+      text-align:center;
+    }
+    .faq-block h2{
+      font-family:"Playfair Display",serif;
+      font-size:34px;
+      letter-spacing:3px;
+      margin-bottom:6px;
+    }
+    .faq-block h3{
+      font-style:italic;
+      font-size:18px;
+      margin-bottom:22px;
+    }
+    .faq-list{
+      display:flex;
+      flex-wrap:wrap;
+      gap:12px;
+      justify-content:center;
+    }
+    .faq-pill{
+      background:#f2c661;
+      color:#222;
+      border-radius:20px;
+      padding:8px 18px;
+      font-size:14px;
+      box-shadow:0 10px 22px rgba(0,0,0,0.7);
+      transition:0.25s;
+    }
+    .faq-pill:hover{
+      transform:translateY(-4px);
+    }
+
+    /* ============ BLOOMS BY MARRA (page 7) ============ */
+    .blooms-section{
+      background:#355c80;
+      padding:60px 8%;
+      text-align:center;
+    }
+    .blooms-title{
+      font-family:"Playfair Display",serif;
+      font-size:46px;
+      letter-spacing:8px;
+      margin-bottom:8px;
+    }
+    .blooms-sub{
+      font-size:22px;
+      margin-bottom:30px;
+    }
+    .flower-grid{
+      display:grid;
+      grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
+      gap:20px;
+      max-width:1100px;
+      margin:0 auto 30px;
+    }
+    .flower-card{
+      background:#fefefe;
+      color:#222;
+      border-radius:14px;
+      overflow:hidden;
+      box-shadow:0 12px 26px rgba(0,0,0,0.8);
+    }
+    .flower-card img{
+      width:100%;
+      height:180px;
+      object-fit:cover;
+    }
+    .flower-card .flower-info{
+      padding:10px 12px 14px;
+      font-size:14px;
+    }
+    .blooms-contact{
+      font-size:15px;
+      line-height:1.7;
+      margin-top:10px;
+    }
+
+    /* ============ CONTACT (page 8) ============ */
+    .contact-section{
+      background:var(--bg-blue);
+      padding:50px 8% 0;
+    }
+    .contact-wrapper{
+      display:grid;
+      grid-template-columns:1.1fr 1fr;
+      gap:28px;
+      max-width:1100px;
+      margin:0 auto 40px;
+    }
+    .contact-form{
+      background:#f7d36d;
+      color:#222;
+      padding:24px 22px;
+      border-radius:12px;
+      box-shadow:0 10px 24px rgba(0,0,0,0.7);
+    }
+    .contact-form h3{
+      margin-bottom:12px;
+      font-family:"Playfair Display",serif;
+      font-size:24px;
+    }
+    .contact-form label{
+      font-size:14px;
+      display:block;
+      margin-top:10px;
+    }
+    .contact-form input,
+    .contact-form textarea{
+      width:100%;
+      border-radius:6px;
+      border:none;
+      padding:8px 10px;
+      margin-top:4px;
+      font-family:inherit;
+      font-size:14px;
+    }
+    .contact-form textarea{
+      min-height:90px;
+      resize:vertical;
+    }
+    .contact-form button{
+      margin-top:14px;
+      padding:8px 18px;
+      border-radius:18px;
+      border:none;
+      background:#222;
+      color:#fff;
+      cursor:pointer;
+    }
+
+    .contact-info-box{
+      background:#fefefe;
+      color:#222;
+      border-radius:12px;
+      padding:18px 18px 20px;
+      box-shadow:0 10px 24px rgba(0,0,0,0.7);
+      font-size:14px;
+    }
+    .contact-info-box h3{
+      font-family:"Playfair Display",serif;
+      margin-bottom:8px;
+      font-size:22px;
+    }
+
+    .map-placeholder{
+      height:220px;
+      margin:0 auto 30px;
+      max-width:1100px;
+      border-radius:12px;
+      overflow:hidden;
+      background:url("map-placeholder.jpg") center/cover no-repeat;
+      box-shadow:0 10px 24px rgba(0,0,0,0.8);
+    }
+    .contact-bottom{
+      text-align:center;
+      padding:20px 0 40px;
+      font-size:16px;
+    }
+
+    /* ============ ORDER NOW (page 9) ============ */
+    .order-section{
+      background:var(--bg-blue);
+      padding:60px 8% 80px;
+      text-align:center;
+    }
+    .order-title{
+      font-family:"Great Vibes",cursive;
+      font-size:80px;
+      margin-bottom:16px;
+    }
+    .order-line{
+      width:240px;
+      height:6px;
+      background:#000;
+      margin:0 auto;
+      box-shadow:0 4px 0 #333;
+    }
+
+    /* ============ RESPONSIVE ============ */
+    @media (max-width:900px){
+      .contact-wrapper{
+        grid-template-columns:1fr;
+      }
+      .services-hero h2{font-size:40px;}
+      .services-strip h3{font-size:40px;}
+    }
+    @media (max-width:600px){
+      .hero-title{font-size:54px;}
+      .services-hero h2{font-size:32px;}
+      .service-banner{height:auto;padding:24px 0;}
+      .service-card-row{flex-direction:column;gap:18px;}
+      .service-pill{width:80%;max-width:none;}
+      .service-pill:nth-child(2)::before,
+      .service-pill:nth-child(2)::after{display:none;}
+    }
+  </style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav class="nav-bar">
+  <ul>
+    <li><a href="#home">Homepage</a></li>
+    <li><a href="#services">Our Services</a></li>
+    <li><a href="#themes">Casket and Burial Themes</a></li>
+    <li><a href="#obits">Obituaries</a></li>
+    <li><a href="#grief">Grief and Support</a></li>
+    <li><a href="#faq">FAQs</a></li>
+    <li><a href="#blooms">Send Flowers & Gifts</a></li>
+    <li><a href="#contact">Contact Us</a></li>
+    <li><a href="#order">Order Now</a></li>
+  </ul>
+</nav>
+
+<!-- INFO BAR -->
+<div class="topbar">
+  <div class="row">
+    <div class="info">📍 Gen T. De Leon, Valenzuela City</div>
+    <div class="info">📞 +63 92141177812</div>
+    <div class="info">🕒 Monday - Sunday | Open 24 hours</div>
+  </div>
+</div>
+
+<!-- HOME / HERO + HISTORY -->
+<section id="home" class="hero section">
+
+  <!-- HERO VIDEO BACKGROUND -->
+  <video class="hero-video" autoplay muted loop playsinline>
+    <source src="herovid.mp4" type="video/mp4">
+  </video>
+
+  <div class="hero-logo">
+    <img src="logo.png" alt="Solara Farewell Logo">
+  </div>
+  <div class="hero-title">Solara Farewell</div>
+  <div class="hero-subtitle">“Finding peace in the light of a life well-lived”</div>
+</section>
+
+<div class="gold-bar"></div>
+
+<section class="history-section section">
+  <h2>Our History</h2>
+  <p>
+    Solara Farewell was started by a close group of friends who share a deep
+    respect for honoring the lives of those who have passed. Guided by their belief in
+    celebrating a life well lived, they set out to create a funeral service company that
+    offers more care and warmth than the usual approach.
+  </p>
+  <p>
+    Each founder brings different experiences, but they all share the same goal: to
+    give families a compassionate and personal way to say goodbye. They wanted to
+    offer services that not only handle the practical needs but also provide a
+    comforting and dignified experience that reflects each person’s unique story.
+  </p>
+  <p>
+    At Solara Farewell, families can expect thoughtful support and a service that
+    truly honors their loved one.
+  </p>
+
+  <div class="subhead">Vision</div>
+  <div class="divider"></div>
+  <p>
+    Solara Farewell, the nation’s trusted name in compassionate and innovative
+    memorial services, guiding families to celebrate life and find comfort in every
+    farewell.
+  </p>
+
+  <div class="subhead">Mission</div>
+  <div class="divider"></div>
+  <p>
+    Solara Farewell honors every life with compassionate, respectful care and
+    innovative memorial services that help families celebrate life and find comfort in
+    every farewell.
+  </p>
+</section>
+
+<!-- OUR SERVICES (page 2) -->
+<section id="services" class="section">
+  <div class="services-hero">
+    <h2>Our Services</h2>
+  </div>
+
+  <div class="services-strip">
+
+    <h3>BURIAL SERVICES</h3>
+    <div class="service-banner burial">
+      <div class="service-card-row">
+        <div class="service-pill" style="--delay:0s"><h4>Basic Burial<br>Packages</h4></div>
+        <div class="service-pill" style="--delay:.2s"><h4>Premium Burial<br>Packages</h4></div>
+        <div class="service-pill" style="--delay:.4s"><h4>Deluxe Burial<br>Packages</h4></div>
+      </div>
+    </div>
+
+    <h3>CREMATION SERVICES</h3>
+    <div class="service-banner cremation">
+      <div class="service-card-row">
+        <div class="service-pill" style="--delay:0s"><h4>Basic<br>Cremation</h4></div>
+        <div class="service-pill" style="--delay:.2s"><h4>Memorial<br>Cremation</h4></div>
+        <div class="service-pill" style="--delay:.4s"><h4>Premium<br>Cremation</h4></div>
+      </div>
+    </div>
+
+    <h3>ONLINE MEMORIAL SERVICES</h3>
+    <div class="service-banner online">
+      <div class="service-card-row">
+        <div class="service-pill"><h4>Solara e-Burol</h4></div>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- CREMATION THEMES & CASKETS (page 3) -->
+<section id="themes" class="themes-section section">
+  <h2>CREMATION THEMES</h2>
+
+  <div class="theme-row">
+    <div class="theme-card">
+      <img src="crem-theme1.jpg" alt="">
+      <span>Halo of Peace Design<br>PHP 3,750 - 6,000</span>
+    </div>
+    <div class="theme-card">
+      <img src="crem-theme2.jpg" alt="">
+      <span>Imperial Serenity<br>PHP 20,000 - 40,000</span>
+    </div>
+    <div class="theme-card">
+      <img src="crem-theme3.jpg" alt="">
+      <span>Luxe Eternal<br>PHP 50,000 - 85,000</span>
+    </div>
+  </div>
+
+  <div class="caskets-title">Caskets</div>
+
+  <div class="casket-grid">
+    <div class="casket-card">
+      <h3>Basic Casket</h3>
+      <div class="price">Price: Php 8,000 - Php 10,000</div>
+      <p>
+        The main purpose of a basic casket, which is usually an inexpensive and straightforward alternative
+        made of materials like cardboard or cloth-covered wood, is to confine and carry the corpse for burial
+        or cremation.
+      </p>
+      <p>Available Colors: (list your colors here)</p>
+      <p class="sizes">
+        Sizes: Standard sized, Oversized (29"), (33"), (36"), (40"), (44")<br>
+        Dimension in Inches (L x W x H): 84" x 28" x 23", 84" x 29" x 24",
+        85" x 33" x 24", 85" x 36" x 24", 86" x 40" x 24", 86" x 44" x 24"
+      </p>
+    </div>
+
+    <div class="casket-card">
+      <h3>Premium Casket</h3>
+      <div class="price">Price: Php 15,000 - Php 250,000</div>
+      <p>
+        A premium casket honors a loved one with exceptional craftsmanship, premium materials, and considerate
+        details that show their dignity and the compassion of those who are grieving for them.
+      </p>
+      <p>Available Colors: (list your colors here)</p>
+      <p class="sizes">
+        Sizes: Standard sized, Oversized (29"), (33"), (36"), (40"), (44")<br>
+        Dimensions same as basic casket.
+      </p>
+    </div>
+
+    <div class="casket-card">
+      <h3>Deluxe Casket</h3>
+      <div class="price">Price: Php 300,000 - Php 500,000</div>
+      <p>
+        A deluxe coffin honors a life with luxurious style, elegant finishing, and high-end features that
+        provide sympathy and respect during a trying time.
+      </p>
+      <p>Available Colors: (list your colors here)</p>
+      <p class="sizes">
+        Sizes: Standard sized, Oversized (29"), (33"), (36"), (40"), (44")<br>
+        Dimensions same as basic casket.
+      </p>
+    </div>
+  </div>
+
+</section>
+
+<!-- OBITUARIES (page 4) -->
+<section id="obits" class="obits-section section">
+  <h2>Obituaries</h2>
+
+  <div class="obits-grid">
+    <div class="obit-card">
+      <div class="obit-photo">
+        <img src="obit1.jpg" alt="">
+      </div>
+      <div class="obit-name">Asis, Fortunato</div>
+      <div class="obit-dates">
+        BORN: October 14, 1940<br>
+        DIED: July 09, 2021
+      </div>
+    </div>
+
+    <div class="obit-card">
+      <div class="obit-photo">
+        <img src="obit2.jpg" alt="">
+      </div>
+      <div class="obit-name">Baltazar, Antonio</div>
+      <div class="obit-dates">
+        BORN: May 12, 1942<br>
+        DIED: December 15, 2017
+      </div>
+    </div>
+
+    <div class="obit-card">
+      <div class="obit-photo">
+        <img src="obit3.jpg" alt="">
+      </div>
+      <div class="obit-name">Alicarte, Claudio</div>
+      <div class="obit-dates">
+        BORN: May 21, 1945<br>
+        DIED: June 26, 2010
+      </div>
+    </div>
+
+    <div class="obit-card">
+      <div class="obit-photo">
+        <img src="obit4.jpg" alt="">
+      </div>
+      <div class="obit-name">Cruz, Marcelina</div>
+      <div class="obit-dates">
+        BORN: August 12, 1943<br>
+        DIED: November 10, 2025
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- GRIEF SUPPORT (page 5) -->
+<section id="grief" class="grief-section section">
+  <div class="grief-hero">
+    <h2>Honoring the Lives of Your Loved Ones</h2>
+  </div>
+
+  <div class="gold-bar"></div>
+
+  <div class="grief-content">
+    <h3>Grief Support</h3>
+    <p>
+      At Solara Farewell we want families to feel supported even after the funeral has ended. We
+      recognize that grief is a gradual process and that each person experiences grief differently.
+      Because of this we provide grief support and a range of resources to assist you during the
+      challenging period that follows a loss.
+    </p>
+    <p>
+      Our support services are intended to offer comfort and clear guidance whenever you need it.
+      We can connect you with professional counselors, established support groups and reliable
+      information that may help you better understand and manage your emotions.
+    </p>
+
+    <div class="grief-buttons">
+      <button class="grief-btn">GRIEF SHARE</button>
+      <button class="grief-btn">PHILIPPINE MENTAL HEALTH ASSOCIATION (PMHA)</button>
+      <button class="grief-btn">ONLINE READING MATERIALS & COMMUNITY CONTACTS</button>
+    </div>
+  </div>
+</section>
+
+<!-- FAQ (page 6) -->
+<section id="faq" class="faq-section section">
+  <div class="faq-block">
+    <h2>CREMATION</h2>
+    <h3>Frequently Asked Questions</h3>
+    <p>Simply reach out to our team, providing us with your vision, and we will swiftly develop a plan that will transform your dreams into lasting memories.</p>
+    <div class="faq-list">
+      <div class="faq-pill">What is the Cost of Cremation?</div>
+      <div class="faq-pill">Is Cremation a Substitution for a Funeral?</div>
+      <div class="faq-pill">Can We Have the Service Before or After the Cremation?</div>
+      <div class="faq-pill">Can a Casket Be Rented Instead of Purchased When Choosing Cremation?</div>
+      <div class="faq-pill">Do All Funeral Homes and Cemeteries Have a Crematory?</div>
+      <div class="faq-pill">Why Is Having a Place to Visit So Important?</div>
+    </div>
+  </div>
+
+  <div class="faq-block">
+    <h2>ARRANGING A SERVICE</h2>
+    <h3>Frequently Asked Questions</h3>
+    <p>Simply reach out to our team, providing us with your vision, and we will swiftly develop a plan that will transform your dreams into lasting memories.</p>
+    <div class="faq-list">
+      <div class="faq-pill">What do I do when a death occurs?</div>
+      <div class="faq-pill">What type of service fits our family?</div>
+      <div class="faq-pill">Should young children be involved in the service?</div>
+      <div class="faq-pill">How do we plan ahead?</div>
+      <div class="faq-pill">Burial or Cremation?</div>
+      <div class="faq-pill">Do we need to view the remains?</div>
+    </div>
+  </div>
+</section>
+
+<!-- BLOOMS BY MARRA (page 7) -->
+<section id="blooms" class="blooms-section section">
+  <div class="blooms-title">BLOOMS</div>
+  <div class="blooms-sub">by Marra</div>
+
+  <div class="flower-grid">
+    <div class="flower-card">
+      <img src="bloom1.jpg" alt="">
+      <div class="flower-info">Serene Blooms - ₱999</div>
+    </div>
+    <div class="flower-card">
+      <img src="bloom2.jpg" alt="">
+      <div class="flower-info">Golden Light - ₱999</div>
+    </div>
+    <div class="flower-card">
+      <img src="bloom3.jpg" alt="">
+      <div class="flower-info">Gentle Radiance - ₱1,499</div>
+    </div>
+    <div class="flower-card">
+      <img src="bloom4.jpg" alt="">
+      <div class="flower-info">Eternal Blooms - ₱2,499</div>
+    </div>
+    <div class="flower-card">
+      <img src="bloom5.jpg" alt="">
+      <div class="flower-info">Remembering Set - (custom pricing)</div>
+    </div>
+  </div>
+
+  <div class="blooms-contact">
+    Blooms by Marra Flower Shop • 0999 604 0668<br>
+    111 Mc Arthur Highway Marulas, Valenzuela, Philippines<br>
+    bloomsbymarra@gmail.com • Facebook & TikTok: @bloomsbymarra
+  </div>
+</section>
+
+<!-- CONTACT (page 8) -->
+<section id="contact" class="contact-section section">
+  <div class="contact-wrapper">
+    <div class="contact-form">
+      <h3>Contact Form</h3>
+      <p style="font-size:12px;margin-bottom:6px;">Your name won’t be shared. Never submit passwords.</p>
+      <label>Name</label>
+      <input type="text" placeholder="Your name">
+      <label>Email address</label>
+      <input type="email" placeholder="you@example.com">
+      <label>Leave a message</label>
+      <textarea placeholder="Write your message here"></textarea>
+      <button type="button">Submit</button>
+    </div>
+
+    <div class="contact-info-box">
+      <h3>Solara Farewell</h3>
+      <p>
+        We’re here to assist you during this difficult time. Whether you need to arrange about a
+        service, have a question about our facilities, or simply need guidance, please don’t hesitate
+        to contact us. We’re available 24/7.
+      </p>
+      <p>
+        📞 09214177812<br>
+        ✉️ solarafarewell@gmail.com<br>
+        Facebook: Solara Farewell<br>
+        Instagram: @solarafarewell
+      </p>
+    </div>
+  </div>
+
+  <div class="map-placeholder"></div>
+
+  <div class="contact-bottom">
+    At Solara, you are family.<br>
+    For further inquiries and concerns, you may get in touch.
+  </div>
+</section>
+
+<!-- ORDER NOW (page 9) -->
+<section id="order" class="order-section section">
+  <div class="order-title">Order Now</div>
+  <div class="order-line"></div>
+</section>
+
+</body>
+</html>

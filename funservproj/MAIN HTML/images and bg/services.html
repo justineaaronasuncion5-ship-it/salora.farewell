@@ -1,0 +1,1783 @@
+<!doctype html>
+<html lang="en">
+ <head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Solara Farewell - Memorial Services</title>
+  <link href="https://fonts.googleapis.com/css2?family=Great+Vibes&amp;family=Playfair+Display:wght@400;600;700&amp;family=Merriweather:wght@300;400;700&amp;display=swap" rel="stylesheet">
+  <script src="/_sdk/element_sdk.js"></script>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Merriweather', serif;
+      color: #2f4963;
+      overflow-x: hidden;
+      box-sizing: border-box;
+    }
+
+    html, body {
+      height: 100%;
+      width: 100%;
+    }
+
+    .app-wrapper {
+      width: 100%;
+      min-height: 100%;
+    }
+
+    /* Navigation */
+    .nav-container {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      z-index: 1000;
+      background: #2f4963;
+    }
+
+    .main-nav {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      padding: 1rem 2rem;
+      flex-wrap: wrap;
+      gap: 0.5rem;
+    }
+
+    .main-nav a {
+      color: white;
+      text-decoration: none;
+      padding: 0.5rem 1rem;
+      font-size: 0.9rem;
+      transition: color 0.3s;
+      white-space: nowrap;
+    }
+
+    /* Mobile hamburger button (hidden on desktop) */
+    .nav-toggle {
+      display: none;
+      background: transparent;
+      border: none;
+      color: white;
+      padding: 0.5rem;
+      cursor: pointer;
+    }
+
+    .nav-toggle:focus {
+      outline: 2px dashed rgba(215,154,41,0.6);
+      outline-offset: 3px;
+    }
+
+    .hamburger {
+      display: block;
+      width: 24px;
+      height: 2px;
+      background: white;
+      position: relative;
+      transition: transform 0.25s ease-in-out;
+    }
+
+    .hamburger::before,
+    .hamburger::after {
+      content: "";
+      position: absolute;
+      left: 0;
+      width: 24px;
+      height: 2px;
+      background: white;
+      transition: transform 0.25s ease-in-out, top 0.2s ease-in-out;
+    }
+
+    .hamburger::before { top: -7px; }
+    .hamburger::after { top: 7px; }
+
+    /* when nav is open turn hamburger into X */
+    .nav-container.nav-open .hamburger {
+      background: transparent;
+    }
+
+    .nav-container.nav-open .hamburger::before {
+      transform: rotate(45deg) translate(4px, 4px);
+      top: 0;
+    }
+
+    .nav-container.nav-open .hamburger::after {
+      transform: rotate(-45deg) translate(4px, -4px);
+      top: 0;
+    }
+
+    .main-nav a:hover {
+      color: #d79a29;
+    }
+
+    .info-bar {
+      background: #3a6082;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 0.75rem 2rem;
+      color: white;
+      font-size: 0.85rem;
+      flex-wrap: wrap;
+      gap: 1rem;
+    }
+
+    .info-item {
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+
+    /* Hero Section */
+    .hero-section {
+      height: 100%;
+      min-height: 600px;
+      position: relative;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      margin-top: 120px;
+      background: #000; /* fallback if video doesn't load */
+      overflow: hidden;
+    }
+
+    /* 🔴 HERO BACKGROUND VIDEO
+       Put a file named "herovid.mp4" in the same folder as this HTML.
+       Or change the src attribute in the <video> tag below.
+    */
+    .hero-video {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      filter: brightness(0.35);
+      z-index: 0;
+    }
+
+    .hero-overlay {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(47, 73, 99, 0.5);
+      z-index: 1;
+    }
+
+    .hero-content {
+      position: relative;
+      z-index: 2;
+      padding: 2rem;
+      animation: fadeInUp 1.5s ease-out;
+    }
+
+    .hero-logo {
+      width: 120px;
+      height: 120px;
+      margin: 0 auto 2rem;
+      border: 4px solid #d79a29;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: rgba(215, 154, 41, 0.1);
+      overflow: hidden;
+    }
+
+    /* 🔴 LOGO IMAGE
+       Put "logo.png" in the same folder as this HTML.
+    */
+    .hero-logo img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+
+    .hero-logo-text {
+      font-family: 'Great Vibes', cursive;
+      font-size: 2.5rem;
+      color: #d79a29;
+    }
+
+    .hero-title {
+      font-family: 'Great Vibes', cursive;
+      font-size: 4rem;
+      color: #d79a29;
+      margin-bottom: 1rem;
+    }
+
+    .hero-subtitle {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.3rem;
+      color: white;
+      font-weight: 300;
+    }
+
+    /* Gold Divider */
+    .gold-divider {
+      height: 2px;
+      background: #d79a29;
+      width: 100%;
+      margin: 3rem 0;
+    }
+
+    /* Section Styles */
+    .section {
+      padding: 4rem 2rem;
+      width: 100%;
+    }
+
+    .section-dark {
+      background: #2f4963;
+      color: white;
+    }
+
+    .section-title {
+      font-family: 'Great Vibes', cursive;
+      font-size: 3rem;
+      color: #d79a29;
+      text-align: center;
+      margin-bottom: 2rem;
+    }
+
+    .section-heading {
+      font-family: 'Playfair Display', serif;
+      font-size: 2rem;
+      color: #d79a29;
+      margin-bottom: 1rem;
+    }
+
+    .section-text {
+      font-size: 1rem;
+      line-height: 1.8;
+      margin-bottom: 1.5rem;
+      max-width: 900px;
+      margin-left: auto;
+      margin-right: auto;
+    }
+
+    /* About Section */
+    .about-content {
+      max-width: 1000px;
+      margin: 0 auto;
+      animation: fadeInUp 1s ease-out;
+    }
+
+    /* Services Section */
+    .service-banner {
+      width: 100%;
+      height: 200px;
+      background: linear-gradient(135deg, rgba(215, 154, 41, 0.2) 0%, rgba(58, 96, 130, 0.2) 100%);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin-bottom: 3rem;
+    }
+
+    .service-banner h2 {
+      font-family: 'Great Vibes', cursive;
+      font-size: 4rem;
+      color: #d79a29;
+      letter-spacing: 4px;
+    }
+
+    .service-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 2rem;
+      max-width: 1200px;
+      margin: 3rem auto;
+    }
+
+    .service-card {
+      background: white;
+      border-radius: 20px;
+      padding: 1.5rem;
+      box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+      transition: transform 0.3s, box-shadow 0.3s;
+      animation: floatGentle 3s ease-in-out infinite;
+    }
+
+    .service-card:hover {
+      transform: translateY(-10px);
+      box-shadow: 0 8px 25px rgba(0, 0, 0, 0.2);
+    }
+
+    .service-card h3 {
+      font-family: 'Playfair Display', serif;
+      color: #2f4963;
+      margin-bottom: 1rem;
+      font-size: 1.3rem;
+    }
+
+    .service-card p {
+      font-size: 0.95rem;
+    }
+
+    /* 🔴 SERVICE IMAGES
+       Replace background-image URLs with your own filenames if needed.
+    */
+    .service-image {
+      width: 100%;
+      height: 200px;
+      border-radius: 15px;
+      margin-bottom: 1.5rem;
+      display: block;
+      background-size: cover;
+      background-position: center;
+      background-repeat: no-repeat;
+    }
+
+    /* Burial */
+    .service-image.burial-basic {
+      background-image: url("basicb.jpg");
+    }
+    .service-image.burial-premium {
+      background-image: url("premb.jpg");
+    }
+    .service-image.burial-deluxe {
+      background-image: url("deluxeb.jpg");
+    }
+
+    /* Cremation */
+    .service-image.crem-basic {
+      background-image: url("basicp.jpg");
+    }
+    .service-image.crem-memorial {
+      background-image: url("premp.jpg");
+    }
+    .service-image.crem-premium {
+      background-image: url("delc.jpg");
+    }
+
+    /* Online memorial */
+    .service-image.online-eburo {
+      background-image: url("olb.jpg");
+      
+    }
+
+    /* Theme & Casket Cards */
+    .theme-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 2rem;
+      max-width: 1200px;
+      margin: 2rem auto;
+    }
+
+    .theme-card {
+      background: white;
+      border-radius: 15px;
+      overflow: hidden;
+      box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+      transition: transform 0.3s;
+    }
+
+    .theme-card:hover {
+      transform: translateY(-8px);
+    }
+
+    .theme-image {
+      width: 100%;
+      height: 250px;
+      background-size: cover;
+      background-position: center;
+      background-repeat: no-repeat;
+    }
+
+    /* 🔴 CREMATION THEME IMAGES */
+    .theme-image.theme-halo {
+      background-image: url("theme-halo.jpg");
+    }
+    .theme-image.theme-imperial {
+      background-image: url("theme-imperial.jpg");
+    }
+    .theme-image.theme-luxe {
+      background-image: url("theme-luxe.jpg");
+    }
+
+    .theme-content {
+      padding: 1.5rem;
+    }
+
+    .theme-name {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.5rem;
+      color: #2f4963;
+      margin-bottom: 0.5rem;
+    }
+
+    .theme-price {
+      font-size: 1.2rem;
+      color: #d79a29;
+      font-weight: bold;
+    }
+
+    .casket-card {
+      background: white;
+      border-radius: 15px;
+      padding: 2rem;
+      box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+      text-align: center;
+    }
+
+    .casket-title {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.5rem;
+      color: #2f4963;
+      margin-bottom: 1rem;
+    }
+
+    .casket-price {
+      font-size: 1.3rem;
+      color: #d79a29;
+      font-weight: bold;
+    }
+
+    /* Obituaries */
+    .obituary-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 2rem;
+      max-width: 1200px;
+      margin: 2rem auto;
+    }
+
+    .obituary-card {
+      background: white;
+      border-radius: 15px;
+      overflow: hidden;
+      box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+      transition: transform 0.3s;
+    }
+
+    .obituary-card:hover {
+      transform: translateY(-8px);
+    }
+
+    .obituary-photo {
+      width: 100%;
+      height: 280px;
+      background-size: cover;
+      background-position: center;
+      background-repeat: no-repeat;
+    }
+
+    /* 🔴 OBITUARY PHOTOS */
+    .obituary-photo.obit-asis {
+      background-image: url("obit-asis.jpg");
+    }
+    .obituary-photo.obit-baltazar {
+      background-image: url("obit-baltazar.jpg");
+    }
+    .obituary-photo.obit-alicarte {
+      background-image: url("obit-alicarte.jpg");
+    }
+    .obituary-photo.obit-cruz {
+      background-image: url("obit-cruz.jpg");
+    }
+
+    .obituary-info {
+      padding: 1.5rem;
+      text-align: center;
+    }
+
+    .obituary-name {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.3rem;
+      color: #2f4963;
+      margin-bottom: 0.5rem;
+    }
+
+    .obituary-dates {
+      color: #3a6082;
+      font-size: 0.95rem;
+    }
+
+    /* Obituary Search Bar */
+    .obituary-search-container {
+      max-width: 500px;
+      margin: 0 auto 2rem;
+      padding: 0 1rem;
+    }
+
+    .obituary-search-input {
+      width: 100%;
+      padding: 0.75rem 1rem;
+      font-size: 1rem;
+      border: 2px solid #d79a29;
+      border-radius: 8px;
+      font-family: 'Merriweather', serif;
+      transition: border-color 0.3s, box-shadow 0.3s;
+    }
+
+    .obituary-search-input:focus {
+      outline: none;
+      border-color: #2f4963;
+      box-shadow: 0 0 0 3px rgba(47, 73, 99, 0.1);
+    }
+
+    .obituary-card.hidden {
+      display: none;
+    }
+
+    /* FAQ */
+    .faq-section {
+      max-width: 1000px;
+      margin: 0 auto;
+    }
+
+    .faq-category {
+      margin-bottom: 3rem;
+    }
+
+    .faq-category-title {
+      font-family: 'Playfair Display', serif;
+      font-size: 2rem;
+      color: #2f4963;
+      margin-bottom: 1.5rem;
+    }
+
+    .faq-chips {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 1rem;
+    }
+
+    .faq-chip {
+      background: white;
+      border: 2px solid #d79a29;
+      color: #2f4963;
+      padding: 0.75rem 1.5rem;
+      border-radius: 25px;
+      font-size: 0.95rem;
+      transition: transform 0.3s, background 0.3s;
+      cursor: pointer;
+    }
+
+    .faq-chip:hover {
+      transform: translateY(-5px);
+      background: #d79a29;
+      color: white;
+    }
+
+    /* Flowers Section */
+    .flower-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 2rem;
+      max-width: 1200px;
+      margin: 2rem auto;
+    }
+
+    .flower-card {
+      background: white;
+      border-radius: 15px;
+      padding: 1.5rem;
+      box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+      text-align: center;
+    }
+
+    .flower-name {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.3rem;
+      color: #2f4963;
+      margin-bottom: 0.5rem;
+    }
+
+    .flower-price {
+      font-size: 1.2rem;
+      color: #d79a29;
+      font-weight: bold;
+    }
+
+    /* Flower images */
+    .flower-image {
+      width: 100%;
+      height: 200px;
+      border-radius: 12px;
+      margin-bottom: 1rem;
+      background-size: cover;
+      background-position: center;
+      background-repeat: no-repeat;
+    }
+
+    /* 🔴 FLOWER IMAGES */
+    .flower-image.flowers-serene {
+      background-image: url("flowers-serene.jpg");
+    }
+    .flower-image.flowers-golden {
+      background-image: url("flowers-golden.jpg");
+    }
+    .flower-image.flowers-radiance {
+      background-image: url("flowers-radiance.jpg");
+    }
+    .flower-image.flowers-eternal {
+      background-image: url("flowers-eternal.jpg");
+    }
+    .flower-image.flowers-remember {
+      background-image: url("flowers-remember.jpg");
+    }
+
+    /* Support Buttons */
+    .support-buttons {
+      display: flex;
+      justify-content: center;
+      gap: 1.5rem;
+      margin: 2rem 0;
+      flex-wrap: wrap;
+    }
+
+    .support-btn {
+      background: #d79a29;
+      color: white;
+      padding: 1rem 2rem;
+      border-radius: 30px;
+      text-decoration: none;
+      font-family: 'Playfair Display', serif;
+      font-size: 1.1rem;
+      transition: transform 0.3s, background 0.3s;
+      display: inline-block;
+    }
+
+    .support-btn:hover {
+      transform: scale(1.05);
+      background: #c28920;
+    }
+
+    /* Contact Section */
+    .contact-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 3rem;
+      max-width: 1200px;
+      margin: 2rem auto;
+    }
+
+    .contact-form {
+      background: #fffaed;
+      padding: 2rem;
+      border-radius: 15px;
+    }
+
+    .form-group {
+      margin-bottom: 1.5rem;
+    }
+
+    .form-label {
+      display: block;
+      font-family: 'Playfair Display', serif;
+      color: #2f4963;
+      margin-bottom: 0.5rem;
+      font-size: 1rem;
+    }
+
+    .form-input,
+    .form-textarea {
+      width: 100%;
+      padding: 0.75rem;
+      border: 2px solid #d79a29;
+      border-radius: 8px;
+      font-family: 'Merriweather', serif;
+      font-size: 0.95rem;
+      background: white;
+    }
+
+    .form-textarea {
+      resize: vertical;
+      min-height: 120px;
+    }
+
+    .submit-btn {
+      background: #2f4963;
+      color: white;
+      padding: 1rem 2rem;
+      border: none;
+      border-radius: 8px;
+      font-family: 'Playfair Display', serif;
+      font-size: 1.1rem;
+      cursor: pointer;
+      transition: background 0.3s;
+      width: 100%;
+    }
+
+    .submit-btn:hover {
+      background: #3a6082;
+    }
+
+    .privacy-note {
+      font-size: 0.8rem;
+      color: #666;
+      margin-top: 1rem;
+    }
+
+    .contact-info {
+      background: white;
+      padding: 2rem;
+      border-radius: 15px;
+      box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+    }
+
+    .contact-detail {
+      margin-bottom: 1.5rem;
+    }
+
+    .contact-detail-label {
+      font-family: 'Playfair Display', serif;
+      color: #d79a29;
+      font-size: 1.1rem;
+      margin-bottom: 0.5rem;
+    }
+
+    /* 🔴 MAP BACKGROUND IMAGE
+       Put "map-placeholder.jpg" in same folder.
+    */
+    .map-placeholder {
+      width: 100%;
+      height: 300px;
+      background: url("map.jpg") center/cover no-repeat;
+      border-radius: 15px;
+      margin-top: 2rem;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: white;
+      font-size: 1.2rem;
+    }
+
+    /* Order Section */
+    .order-section {
+      background: #2f4963;
+      color: white;
+      padding: 4rem 2rem;
+      text-align: center;
+    }
+
+    .order-title {
+      font-family: 'Great Vibes', cursive;
+      font-size: 3.5rem;
+      color: #d79a29;
+      margin-bottom: 1rem;
+      border-bottom: 4px solid #000;
+      display: inline-block;
+      padding-bottom: 0.5rem;
+    }
+
+    /* Animations */
+    @keyframes fadeInUp {
+      from {
+        opacity: 0;
+        transform: translateY(30px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    @keyframes floatGentle {
+      0%, 100% {
+        transform: translateY(0);
+      }
+      50% {
+        transform: translateY(-5px);
+      }
+    }
+
+    /* Responsive */
+    @media (max-width: 768px) {
+      /* Navigation & Header */
+      .nav-container {
+        position: relative;
+      }
+
+      /* show hamburger toggle, collapse main nav by default */
+      .nav-toggle {
+        display: block;
+        position: absolute;
+        right: 1rem;
+        top: 0.9rem;
+        z-index: 1100;
+      }
+
+      .main-nav {
+        display: none; /* hidden until opened */
+        flex-direction: column;
+        gap: 0;
+        padding: 0.5rem 0;
+        background: #2f4963;
+        position: absolute;
+        top: 56px;
+        left: 0;
+        width: 100%;
+        z-index: 1050;
+        box-shadow: 0 6px 18px rgba(0,0,0,0.18);
+      }
+
+      .main-nav a {
+        padding: 0.9rem 1rem;
+        font-size: 0.95rem;
+        white-space: nowrap;
+        border-bottom: 1px solid rgba(255,255,255,0.04);
+        display: block;
+      }
+
+      /* when nav container has .nav-open show the menu */
+      .nav-container.nav-open .main-nav {
+        display: flex;
+      }
+
+      .info-bar {
+        flex-direction: column;
+        text-align: center;
+        padding: 0.5rem 1rem;
+        gap: 0.5rem;
+      }
+
+      .info-item {
+        justify-content: center;
+        font-size: 0.75rem;
+      }
+
+      /* Hero Section */
+      .hero-section {
+        margin-top: 180px;
+        min-height: 400px;
+      }
+
+      .hero-title {
+        font-size: 2rem;
+      }
+
+      .hero-subtitle {
+        font-size: 0.9rem;
+      }
+
+      .hero-content {
+        padding: 1rem;
+      }
+
+      .hero-logo {
+        width: 80px;
+        height: 80px;
+        margin: 0 auto 1.5rem;
+      }
+
+      .cta-button {
+        padding: 0.6rem 1.5rem;
+        font-size: 0.9rem;
+      }
+
+      /* Section Titles */
+      .section-title {
+        font-size: 1.75rem;
+        margin-bottom: 1.5rem;
+      }
+
+      .section-text {
+        font-size: 0.95rem;
+        margin-bottom: 1rem;
+        padding: 0 1rem;
+      }
+
+      /* Service Banner */
+      .service-banner {
+        height: 150px;
+        margin-bottom: 2rem;
+      }
+
+      .service-banner h2 {
+        font-size: 1.8rem;
+        letter-spacing: 2px;
+      }
+
+      /* Grids */
+      .service-grid,
+      .theme-grid,
+      .obituary-grid {
+        grid-template-columns: 1fr;
+        gap: 1.5rem;
+        margin: 2rem 1rem;
+        max-width: 100%;
+      }
+
+      .service-card,
+      .theme-card,
+      .obituary-card {
+        border-radius: 12px;
+        padding: 1rem;
+      }
+
+      .service-image,
+      .theme-image {
+        height: 180px;
+        margin-bottom: 1rem;
+      }
+
+      .service-card h3,
+      .theme-card h3 {
+        font-size: 1.1rem;
+      }
+
+      .service-card p,
+      .theme-card p,
+      .obituary-info p {
+        font-size: 0.9rem;
+      }
+
+      /* Obituary Search */
+      .obituary-search-container {
+        max-width: 100%;
+        margin: 0 1rem 1.5rem;
+        padding: 0;
+      }
+
+      .obituary-search-input {
+        font-size: 0.95rem;
+        padding: 0.65rem 0.85rem;
+      }
+
+      .obituary-name {
+        font-size: 1.1rem;
+      }
+
+      .obituary-dates {
+        font-size: 0.85rem;
+      }
+
+      /* FAQ Section */
+      .faq-section {
+        padding: 0 1rem;
+      }
+
+      .faq-category-title {
+        font-size: 1.2rem;
+      }
+
+      .faq-chip {
+        font-size: 0.85rem;
+        padding: 0.6rem 0.8rem;
+      }
+
+      /* Support Buttons */
+      .support-buttons {
+        flex-direction: column;
+        gap: 1rem;
+        padding: 1.5rem 1rem;
+      }
+
+      .support-btn {
+        width: 100%;
+        padding: 1rem;
+        font-size: 0.95rem;
+      }
+
+      /* Contact Section */
+      .contact-content {
+        padding: 0 1rem;
+      }
+
+      .contact-form {
+        margin: 0;
+      }
+
+      .contact-form input,
+      .contact-form textarea {
+        font-size: 16px;
+      }
+
+      .contact-detail {
+        padding: 1rem;
+        margin: 1rem 0;
+      }
+
+      /* Order Section */
+      .order-content {
+        padding: 0 1rem;
+      }
+
+      .order-form {
+        padding: 1rem;
+      }
+
+      .order-form input,
+      .order-form select,
+      .order-form textarea {
+        font-size: 16px;
+      }
+    }
+
+    /* Extra small devices (phones) */
+    @media (max-width: 480px) {
+      .main-nav {
+        gap: 0.2rem;
+        padding: 0.5rem 0.7rem;
+      }
+
+      .main-nav a {
+        padding: 0.3rem 0.5rem;
+        font-size: 0.65rem;
+      }
+
+      .info-bar {
+        padding: 0.4rem 0.7rem;
+        gap: 0.4rem;
+      }
+
+      .info-item {
+        font-size: 0.65rem;
+      }
+
+      .hero-section {
+        margin-top: 160px;
+        min-height: 350px;
+      }
+
+      .hero-title {
+        font-size: 1.5rem;
+      }
+
+      .hero-subtitle {
+        font-size: 0.8rem;
+      }
+
+      .hero-logo {
+        width: 70px;
+        height: 70px;
+        margin: 0 auto 1rem;
+      }
+
+      .section-title {
+        font-size: 1.5rem;
+        margin-bottom: 1rem;
+      }
+
+      .section-text {
+        font-size: 0.9rem;
+        padding: 0 0.8rem;
+      }
+
+      .service-banner h2 {
+        font-size: 1.4rem;
+      }
+
+      .service-grid,
+      .theme-grid,
+      .obituary-grid,
+      .flower-grid {
+        margin: 1.5rem 0.8rem;
+        gap: 1rem;
+      }
+
+      .service-image,
+      .theme-image,
+      .flower-image {
+        height: 150px;
+        margin-bottom: 0.8rem;
+      }
+
+      .service-card h3,
+      .theme-card h3,
+      .flower-name {
+        font-size: 1rem;
+      }
+
+      .service-card,
+      .theme-card,
+      .flower-card {
+        padding: 0.8rem;
+      }
+
+      .flower-price {
+        font-size: 1.1rem;
+      }
+
+      .obituary-photo {
+        height: 200px;
+      }
+
+      .obituary-name {
+        font-size: 1rem;
+      }
+
+      .obituary-search-input {
+        font-size: 0.9rem;
+        padding: 0.6rem 0.75rem;
+      }
+
+      .faq-category-title {
+        font-size: 1.1rem;
+      }
+
+      .faq-chip {
+        font-size: 0.8rem;
+        padding: 0.5rem 0.7rem;
+      }
+
+      .cta-button {
+        padding: 0.5rem 1.2rem;
+        font-size: 0.85rem;
+      }
+
+      .support-btn {
+        padding: 0.8rem;
+        font-size: 0.9rem;
+      }
+
+      .contact-form,
+      .order-form {
+        padding: 0.8rem;
+      }
+
+      .contact-detail {
+        padding: 0.8rem;
+        margin: 0.8rem 0;
+      }
+    }
+  </style>
+  <style>@view-transition { navigation: auto; }</style>
+  <script src="/_sdk/data_sdk.js" type="text/javascript"></script>
+  <script src="https://cdn.tailwindcss.com" type="text/javascript"></script>
+ </head>
+ <body>
+  <div class="app-wrapper">
+   <!-- Navigation -->
+   <div class="nav-container">
+    <button id="navToggle" class="nav-toggle" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="hamburger" aria-hidden="true"></span>
+    </button>
+    <nav class="main-nav">
+      <a href="#home">Homepage</a>
+      <a href="#services">Our Services</a>
+      <a href="#themes">Casket &amp; Burial Themes</a>
+      <a href="#obituaries">Obituaries</a>
+      <a href="#support">Grief &amp; Support</a>
+      <a href="#faq">FAQs</a>
+      <a href="#flowers">Send Flowers &amp; Gifts</a>
+      <a href="#contact">Contact Us</a>
+      <a href="#order">Order Now</a>
+    </nav>
+    <div class="info-bar">
+     <div class="info-item"><span>📍</span> <span id="address">Gen T. De Leon, Valenzuela City</span></div>
+     <div class="info-item"><span>📞</span> <span id="phone">+63 XXX XXX XXXX</span></div>
+     <div class="info-item"><span>🕒</span> <span>Open 24/7</span></div>
+    </div>
+   </div>
+
+   <!-- Hero Section -->
+   <section class="hero-section" id="home">
+    <!-- 🔴 HERO VIDEO SOURCE -->
+    <video class="hero-video" autoplay muted loop playsinline>
+      <source src="herobg1.mp4" type="video/mp4">
+    </video>
+
+    <div class="hero-overlay"></div>
+
+    <div class="hero-content">
+     <div class="hero-logo">
+      <!-- 🔴 LOGO IMAGE SOURCE -->
+      <img src="logo.png" alt="Solara Farewell Logo">
+     </div>
+     <h1 class="hero-title" id="hero-title">Solara Farewell</h1>
+     <p class="hero-subtitle" id="hero-subtitle">Finding peace in the light of a life well-lived.</p>
+    </div>
+   </section>
+
+   <!-- Gold Divider -->
+   <div class="gold-divider"></div>
+
+   <!-- About Section -->
+   <section class="section section-dark" id="about">
+    <div class="about-content">
+     <h2 class="section-heading" id="history-title">Our History</h2>
+     <p class="section-text">Solara Farewell was founded with a vision to provide compassionate and dignified memorial services to families during their most difficult times. Our journey began decades ago when our founder recognized the need for a funeral service that truly honors the lives of loved ones while providing comfort and support to grieving families.</p>
+     <p class="section-text">Through the years, we have served countless families with dedication, respect, and unwavering commitment. We understand that each life is unique, and we strive to create personalized farewell ceremonies that reflect the individual spirit of those we honor.</p>
+     <p class="section-text">Today, Solara Farewell stands as a trusted name in memorial services, combining traditional values with modern amenities to serve our community with excellence and compassion.</p>
+     <div class="gold-divider"></div>
+     <h2 class="section-heading" id="vision-title">Our Vision</h2>
+     <p class="section-text">To be the most trusted and compassionate memorial service provider, creating meaningful farewell experiences that bring comfort, peace, and healing to every family we serve, while honoring the dignity and memory of their loved ones.</p>
+     <div class="gold-divider"></div>
+     <h2 class="section-heading" id="mission-title">Our Mission</h2>
+     <p class="section-text">To provide exceptional funeral and memorial services with utmost care, professionalism, and respect. We are committed to supporting families through their grief journey by offering personalized ceremonies, comprehensive support services, and a compassionate environment where memories are cherished and celebrated.</p>
+    </div>
+   </section>
+
+   <!-- Services Section -->
+   <section class="section" id="services">
+    <div class="service-banner">
+     <h2>OUR SERVICES</h2>
+    </div>
+
+    <h3 class="section-heading" style="text-align: center; color: #2f4963;">Burial Services</h3>
+    <div class="service-grid">
+     <div class="service-card">
+      <div class="service-image burial-basic"></div>
+      <h3>Basic Burial</h3>
+      <p>Affordable and dignified burial service with essential arrangements for your loved one.</p>
+     </div>
+     <div class="service-card">
+      <div class="service-image burial-premium"></div>
+      <h3>Premium Burial</h3>
+      <p>Enhanced burial package with premium casket options and personalized memorial service.</p>
+     </div>
+     <div class="service-card">
+      <div class="service-image burial-deluxe"></div>
+      <h3>Deluxe Burial</h3>
+      <p>Our most comprehensive burial service with luxury casket and full ceremonial arrangements.</p>
+     </div>
+    </div>
+
+    <h3 class="section-heading" style="text-align: center; color: #2f4963; margin-top: 3rem;">Cremation Services</h3>
+    <div class="service-grid">
+     <div class="service-card">
+      <div class="service-image crem-basic"></div>
+      <h3>Basic Cremation</h3>
+      <p>Simple and respectful cremation service with standard memorial options.</p>
+     </div>
+     <div class="service-card">
+      <div class="service-image crem-memorial"></div>
+      <h3>Memorial Cremation</h3>
+      <p>Cremation service with memorial ceremony and premium urn selection.</p>
+     </div>
+     <div class="service-card">
+      <div class="service-image crem-premium"></div>
+      <h3>Premium Cremation</h3>
+      <p>Complete cremation package with elaborate memorial service and luxury urn.</p>
+     </div>
+    </div>
+
+    <h3 class="section-heading" style="text-align: center; color: #2f4963; margin-top: 3rem;">Online Memorial</h3>
+
+<div class="service-grid">
+
+  <!-- CLICKABLE CARD - DO NOT REMOVE THIS LINK -->
+  <a href="https://www.canva.com/design/DAG5ZIsUDv4/0abZNF7ZXTtkBspoYFmjjA/view?utlId=h9caa600126#2"
+     target="_blank"
+     rel="noopener noreferrer"
+     style="text-decoration: none; color: inherit; display: block;">
+
+    <div class="service-card">
+      <div class="service-image online-eburo"></div>
+      <h3>Solara e-Burol</h3>
+      <p>Live streaming memorial service allowing family and friends to participate remotely from anywhere in the world.</p>
+    </div>
+
+  </a>
+
+</div>
+
+
+   <!-- Themes & Caskets Section -->
+   <section class="section section-dark" id="themes">
+    <h2 class="section-title">Cremation Themes</h2>
+    <div class="theme-grid">
+     <div class="theme-card">
+      <div class="theme-image theme-halo"></div>
+      <div class="theme-content">
+       <h3 class="theme-name">Halo of Peace</h3>
+       <p class="theme-price">₱3,750 - ₱6,000</p>
+       <p class="section-text" style="font-size: 0.9rem; margin-top: 1rem;">Simple and serene cremation theme with peaceful floral arrangements.</p>
+      </div>
+     </div>
+     <div class="theme-card">
+      <div class="theme-image theme-imperial"></div>
+      <div class="theme-content">
+       <h3 class="theme-name">Imperial Serenity</h3>
+       <p class="theme-price">₱20,000 - ₱40,000</p>
+       <p class="section-text" style="font-size: 0.9rem; margin-top: 1rem;">Elegant theme with refined decorations and premium memorial arrangements.</p>
+      </div>
+     </div>
+     <div class="theme-card">
+      <div class="theme-image theme-luxe"></div>
+      <div class="theme-content">
+       <h3 class="theme-name">Luxe Eternal</h3>
+       <p class="theme-price">₱50,000 - ₱85,000</p>
+       <p class="section-text" style="font-size: 0.9rem; margin-top: 1rem;">Our most luxurious theme featuring exquisite decorations and comprehensive service.</p>
+      </div>
+     </div>
+    </div>
+
+    <h2 class="section-title" style="margin-top: 4rem;">Casket Collections</h2>
+    <div class="theme-grid">
+     <div class="casket-card">
+      <h3 class="casket-title">Basic Caskets</h3>
+      <p class="casket-price">₱8,000 - ₱10,000</p>
+      <p class="section-text" style="font-size: 0.9rem; margin-top: 1rem; color: #2f4963;">Quality caskets with essential features and dignified design.</p>
+     </div>
+     <div class="casket-card">
+      <h3 class="casket-title">Premium Caskets</h3>
+      <p class="casket-price">₱15,000 - ₱250,000</p>
+      <p class="section-text" style="font-size: 0.9rem; margin-top: 1rem; color: #2f4963;">Fine craftsmanship with enhanced materials and elegant finishes.</p>
+     </div>
+     <div class="casket-card">
+      <h3 class="casket-title">Deluxe Caskets</h3>
+      <p class="casket-price">₱300,000 - ₱500,000</p>
+      <p class="section-text" style="font-size: 0.9rem; margin-top: 1rem; color: #2f4963;">Luxury caskets with exceptional craftsmanship and premium materials.</p>
+     </div>
+    </div>
+   </section>
+
+   <!-- Obituaries Section -->
+   <section class="section" id="obituaries">
+    <h2 class="section-title">Recent Obituaries</h2>
+    <div class="obituary-search-container">
+      <input type="text" class="obituary-search-input" id="obituarySearch" placeholder="Search by name...">
+    </div>
+    <div class="obituary-grid" id="obituaryGrid">
+     <div class="obituary-card">
+      <div class="obituary-photo obit-asis"></div>
+      <div class="obituary-info">
+       <h3 class="obituary-name">Asis, Fortunato</h3>
+       <p class="obituary-dates">1945 - 2024</p>
+      </div>
+     </div>
+     <div class="obituary-card">
+      <div class="obituary-photo obit-baltazar"></div>
+      <div class="obituary-info">
+       <h3 class="obituary-name">Baltazar, Antonio</h3>
+       <p class="obituary-dates">1952 - 2024</p>
+      </div>
+     </div>
+     <div class="obituary-card">
+      <div class="obituary-photo obit-alicarte"></div>
+      <div class="obituary-info">
+       <h3 class="obituary-name">Alicarte, Claudio</h3>
+       <p class="obituary-dates">1938 - 2024</p>
+      </div>
+     </div>
+     <div class="obituary-card">
+      <div class="obituary-photo obit-cruz"></div>
+      <div class="obituary-info">
+       <h3 class="obituary-name">Cruz, Marcelina</h3>
+       <p class="obituary-dates">1941 - 2024</p>
+      </div>
+     </div>
+    </div>
+   </section>
+
+   <script>
+     // Obituary search functionality
+     const searchInput = document.getElementById('obituarySearch');
+     const obituaryCards = document.querySelectorAll('.obituary-card');
+
+     searchInput.addEventListener('keyup', function() {
+       const searchTerm = this.value.toLowerCase();
+
+       obituaryCards.forEach(card => {
+         const name = card.querySelector('.obituary-name').textContent.toLowerCase();
+         if (name.includes(searchTerm)) {
+           card.classList.remove('hidden');
+         } else {
+           card.classList.add('hidden');
+         }
+       });
+     });
+   </script>
+
+   <!-- Grief Support Section -->
+   <section class="section section-dark" id="support">
+    <div class="service-banner" style="background: linear-gradient(135deg, rgba(215, 154, 41, 0.3) 0%, rgba(58, 96, 130, 0.3) 100%);">
+     <h2 style="color: white;">GRIEF &amp; SUPPORT</h2>
+    </div>
+   <div class="support-buttons">
+  
+  <!-- GRIEF SHARE LINK -->
+  <a href="https://find.griefshare.org/countries/ph" 
+     class="support-btn" 
+     target="_blank" 
+     rel="noopener noreferrer">
+     Grief Share
+  </a>
+
+  <!-- PHILIPPINE MENTAL HEALTH ASSOCIATION -->
+  <a href="https://www.pmha.org.ph/" 
+     class="support-btn" 
+     target="_blank" 
+     rel="noopener noreferrer">
+     PMHA
+  </a>
+
+  <!-- KEEP THIS IF YOU WANT TO ADD MORE LATER -->
+  <a href="https://mentalhealthph.org/" class="support-btn" target="_blank" rel="noopener noreferrer">
+     Online Materials &amp; Contacts
+  </a>
+
+</div>
+
+    </div>
+   </section>
+
+   <!-- FAQ Section -->
+   <section class="section" id="faq">
+    <h2 class="section-title">Frequently Asked Questions</h2>
+    <div class="faq-section">
+     <div class="faq-category">
+      <h3 class="faq-category-title">Cremation FAQs</h3>
+      <div class="faq-chips">
+       <div class="faq-chip">How much does cremation cost?</div>
+       <div class="faq-chip">Is cremation a funeral substitute?</div>
+       <div class="faq-chip">When is the service held?</div>
+       <div class="faq-chip">Can we rent a casket?</div>
+       <div class="faq-chip">Is there a crematory available?</div>
+       <div class="faq-chip">Why is a place to visit important?</div>
+      </div>
+     </div>
+     <div class="faq-category">
+      <h3 class="faq-category-title">Arranging a Service FAQs</h3>
+      <div class="faq-chips">
+       <div class="faq-chip">What to do when death occurs?</div>
+       <div class="faq-chip">What service fits our needs?</div>
+       <div class="faq-chip">Should children attend?</div>
+       <div class="faq-chip">Can we plan ahead?</div>
+       <div class="faq-chip">Burial or cremation?</div>
+       <div class="faq-chip">Can we view the remains?</div>
+      </div>
+     </div>
+    </div>
+   </section>
+
+   <!-- Flowers Section -->
+   <section class="section section-dark" id="flowers">
+    <h2 class="section-title">BLOOMS <span style="font-family: 'Merriweather', serif; font-size: 2rem;">by</span> Marra</h2>
+    <div class="flower-grid">
+     <div class="flower-card">
+      <div class="flower-image flowers-serene"></div>
+      <h3 class="flower-name">Serene Blooms</h3>
+      <p class="flower-price">₱999</p>
+     </div>
+     <div class="flower-card">
+      <div class="flower-image flowers-golden"></div>
+      <h3 class="flower-name">Golden Light</h3>
+      <p class="flower-price">₱999</p>
+     </div>
+     <div class="flower-card">
+      <div class="flower-image flowers-radiance"></div>
+      <h3 class="flower-name">Gentle Radiance</h3>
+      <p class="flower-price">₱1,499</p>
+     </div>
+     <div class="flower-card">
+      <div class="flower-image flowers-eternal"></div>
+      <h3 class="flower-name">Eternal Blooms</h3>
+      <p class="flower-price">₱2,499</p>
+     </div>
+     <div class="flower-card">
+      <div class="flower-image flowers-remember"></div>
+      <h3 class="flower-name">Remembering Set</h3>
+      <p class="flower-price">Custom Pricing</p>
+     </div>
+    </div>
+    <div class="section-text" style="text-align: center; margin-top: 2rem;">
+     <p><strong>Contact Blooms by Marra:</strong></p>
+     <p>📞 +63 XXX XXX XXXX | ✉️ blooms@marra.com</p>
+     <p>Available for same-day delivery across Metro Manila</p>
+    </div>
+   </section>
+
+   <!-- Contact Section -->
+   <section class="section" id="contact">
+    <h2 class="section-title">Contact Us</h2>
+    <div class="contact-grid">
+     <div class="contact-form">
+      <form id="contactForm">
+       <div class="form-group">
+        <label for="name" class="form-label">Your Name</label>
+        <input type="text" id="name" class="form-input" required>
+       </div>
+       <div class="form-group">
+        <label for="email" class="form-label">Email Address</label>
+        <input type="email" id="email" class="form-input" required>
+       </div>
+       <div class="form-group">
+        <label for="message" class="form-label">Message</label>
+        <textarea id="message" class="form-textarea" required></textarea>
+       </div>
+       <button type="submit" class="submit-btn">Submit Message</button>
+       <p class="privacy-note">Your information is secure and will only be used to respond to your inquiry.</p>
+      </form>
+     </div>
+     <div class="contact-info">
+      <div class="contact-detail">
+       <h3 class="contact-detail-label">24/7 Availability</h3>
+       <p>We are here for you anytime, day or night. Our compassionate team is always ready to assist you.</p>
+      </div>
+      <div class="contact-detail">
+       <h3 class="contact-detail-label">Phone</h3>
+       <p id="contact-phone">+63 XXX XXX XXXX</p>
+      </div>
+      <div class="contact-detail">
+       <h3 class="contact-detail-label">Email</h3>
+       <p id="contact-email">contact@solarafarewell.com</p>
+      </div>
+      <div class="contact-detail">
+       <h3 class="contact-detail-label">Follow Us</h3>
+       <p>Facebook | Instagram | Twitter</p>
+      </div>
+     </div>
+    </div>
+
+    <div class="map-placeholder">
+     📍 Map Location - Gen T. De Leon, Valenzuela City
+    </div>
+   </section>
+
+   <!-- Order Section -->
+   <section class="order-section" id="order">
+    <h2 class="order-title">Order Now</h2>
+    <p class="section-text">Contact us today to begin planning a meaningful farewell for your loved one. Our dedicated team is ready to guide you through every step with compassion and care.</p>
+   </section>
+  </div>
+
+  <script>
+    const defaultConfig = {
+      hero_title: "Solara Farewell",
+      hero_subtitle: "Finding peace in the light of a life well-lived.",
+      address_text: "Gen T. De Leon, Valenzuela City",
+      phone_number: "+63 XXX XXX XXXX",
+      email_address: "contact@solarafarewell.com",
+      history_title: "Our History",
+      vision_title: "Our Vision",
+      mission_title: "Our Mission",
+      background_color: "#2f4963",
+      accent_color: "#d79a29",
+      surface_color: "#ffffff",
+      text_color: "#2f4963",
+      secondary_surface_color: "#3a6082"
+    };
+
+    async function onConfigChange(config) {
+      const heroTitle = config.hero_title || defaultConfig.hero_title;
+      const heroSubtitle = config.hero_subtitle || defaultConfig.hero_subtitle;
+      const addressText = config.address_text || defaultConfig.address_text;
+      const phoneNumber = config.phone_number || defaultConfig.phone_number;
+      const emailAddress = config.email_address || defaultConfig.email_address;
+      const historyTitle = config.history_title || defaultConfig.history_title;
+      const visionTitle = config.vision_title || defaultConfig.vision_title;
+      const missionTitle = config.mission_title || defaultConfig.mission_title;
+
+      const backgroundColor = config.background_color || defaultConfig.background_color;
+      const accentColor = config.accent_color || defaultConfig.accent_color;
+      const surfaceColor = config.surface_color || defaultConfig.surface_color;
+      const textColor = config.text_color || defaultConfig.text_color;
+      const secondarySurfaceColor = config.secondary_surface_color || defaultConfig.secondary_surface_color;
+
+      document.getElementById('hero-title').textContent = heroTitle;
+      document.getElementById('hero-subtitle').textContent = heroSubtitle;
+      document.getElementById('address').textContent = addressText;
+      document.getElementById('phone').textContent = phoneNumber;
+      document.getElementById('contact-phone').textContent = phoneNumber;
+      document.getElementById('contact-email').textContent = emailAddress;
+      document.getElementById('history-title').textContent = historyTitle;
+      document.getElementById('vision-title').textContent = visionTitle;
+      document.getElementById('mission-title').textContent = missionTitle;
+
+      document.documentElement.style.setProperty('--background-color', backgroundColor);
+      document.documentElement.style.setProperty('--accent-color', accentColor);
+      document.documentElement.style.setProperty('--surface-color', surfaceColor);
+      document.documentElement.style.setProperty('--text-color', textColor);
+      document.documentElement.style.setProperty('--secondary-surface-color', secondarySurfaceColor);
+
+      const darkSections = document.querySelectorAll('.section-dark');
+      darkSections.forEach(section => {
+        section.style.backgroundColor = backgroundColor;
+      });
+
+      const navContainer = document.querySelector('.nav-container');
+      navContainer.style.backgroundColor = backgroundColor;
+
+      const infoBar = document.querySelector('.info-bar');
+      infoBar.style.backgroundColor = secondarySurfaceColor;
+
+      const accentElements = document.querySelectorAll('.section-title, .hero-title, .hero-logo-text, .gold-divider, .section-heading, .contact-detail-label, .order-title, .theme-price, .flower-price, .casket-price');
+      accentElements.forEach(el => {
+        el.style.color = accentColor;
+      });
+
+      const goldDividers = document.querySelectorAll('.gold-divider');
+      goldDividers.forEach(divider => {
+        divider.style.backgroundColor = accentColor;
+      });
+
+      const serviceCards = document.querySelectorAll('.service-card, .theme-card, .flower-card, .casket-card, .obituary-card, .contact-info');
+      serviceCards.forEach(card => {
+        card.style.backgroundColor = surfaceColor;
+      });
+
+      const textElements = document.querySelectorAll('.section-text, .service-card h3, .theme-name, .flower-name, .casket-title, .obituary-name, .faq-category-title');
+      textElements.forEach(el => {
+        el.style.color = textColor;
+      });
+
+      const heroLogo = document.querySelector('.hero-logo');
+      heroLogo.style.borderColor = accentColor;
+
+      const supportBtns = document.querySelectorAll('.support-btn');
+      supportBtns.forEach(btn => {
+        btn.style.backgroundColor = accentColor;
+      });
+
+      const submitBtn = document.querySelector('.submit-btn');
+      submitBtn.style.backgroundColor = backgroundColor;
+
+      const faqChips = document.querySelectorAll('.faq-chip');
+      faqChips.forEach(chip => {
+        chip.style.borderColor = accentColor;
+        chip.style.color = textColor;
+      });
+    }
+
+    function mapToCapabilities(config) {
+      return {
+        recolorables: [
+          {
+            get: () => config.background_color || defaultConfig.background_color,
+            set: (value) => {
+              config.background_color = value;
+              window.elementSdk.setConfig({ background_color: value });
+            }
+          },
+          {
+            get: () => config.secondary_surface_color || defaultConfig.secondary_surface_color,
+            set: (value) => {
+              config.secondary_surface_color = value;
+              window.elementSdk.setConfig({ secondary_surface_color: value });
+            }
+          },
+          {
+            get: () => config.text_color || defaultConfig.text_color,
+            set: (value) => {
+              config.text_color = value;
+              window.elementSdk.setConfig({ text_color: value });
+            }
+          },
+          {
+            get: () => config.accent_color || defaultConfig.accent_color,
+            set: (value) => {
+              config.accent_color = value;
+              window.elementSdk.setConfig({ accent_color: value });
+            }
+          },
+          {
+            get: () => config.surface_color || defaultConfig.surface_color,
+            set: (value) => {
+              config.surface_color = value;
+              window.elementSdk.setConfig({ surface_color: value });
+            }
+          }
+        ],
+        borderables: [],
+        fontEditable: undefined,
+        fontSizeable: undefined
+      };
+    }
+
+    function mapToEditPanelValues(config) {
+      return new Map([
+        ["hero_title", config.hero_title || defaultConfig.hero_title],
+        ["hero_subtitle", config.hero_subtitle || defaultConfig.hero_subtitle],
+        ["address_text", config.address_text || defaultConfig.address_text],
+        ["phone_number", config.phone_number || defaultConfig.phone_number],
+        ["email_address", config.email_address || defaultConfig.email_address],
+        ["history_title", config.history_title || defaultConfig.history_title],
+        ["vision_title", config.vision_title || defaultConfig.vision_title],
+        ["mission_title", config.mission_title || defaultConfig.mission_title]
+      ]);
+    }
+
+    if (window.elementSdk) {
+      window.elementSdk.init({
+        defaultConfig,
+        onConfigChange,
+        mapToCapabilities,
+        mapToEditPanelValues
+      });
+    }
+
+    document.getElementById('contactForm').addEventListener('submit', function(e) {
+      e.preventDefault();
+      
+      const name = document.getElementById('name').value;
+      const email = document.getElementById('email').value;
+      const message = document.getElementById('message').value;
+      
+      const tempMessage = document.createElement('div');
+      tempMessage.style.cssText = 'position: fixed; top: 50%; left: 50%; transform: translate(-50%, -50%); background: #d79a29; color: white; padding: 2rem 3rem; border-radius: 15px; font-size: 1.2rem; z-index: 10000; box-shadow: 0 8px 25px rgba(0,0,0,0.3);';
+      tempMessage.textContent = 'Thank you for your message. We will contact you soon.';
+      document.body.appendChild(tempMessage);
+      
+      setTimeout(() => {
+        tempMessage.remove();
+      }, 3000);
+      
+      this.reset();
+    });
+
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+      anchor.addEventListener('click', function(e) {
+        e.preventDefault();
+        const target = document.querySelector(this.getAttribute('href'));
+        if (target) {
+          target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        }
+      });
+    });
+  </script>
+  <script>
+  (function(){
+    const navToggle = document.getElementById('navToggle');
+    const navContainer = document.querySelector('.nav-container');
+
+    if (!navToggle || !navContainer) return;
+
+    function setAria(expanded) {
+      navToggle.setAttribute('aria-expanded', expanded ? 'true' : 'false');
+    }
+
+    navToggle.addEventListener('click', function(e) {
+      e.stopPropagation();
+      const isOpen = navContainer.classList.toggle('nav-open');
+      setAria(isOpen);
+    });
+
+    // close when clicking outside the nav
+    document.addEventListener('click', function(e) {
+      if (!navContainer.contains(e.target) && navContainer.classList.contains('nav-open')) {
+        navContainer.classList.remove('nav-open');
+        setAria(false);
+      }
+    });
+
+    // close on Escape
+    document.addEventListener('keydown', function(e) {
+      if (e.key === 'Escape' && navContainer.classList.contains('nav-open')) {
+        navContainer.classList.remove('nav-open');
+        setAria(false);
+        navToggle.focus();
+      }
+    });
+
+    // close after clicking a nav link
+    document.querySelectorAll('.main-nav a').forEach(a => {
+      a.addEventListener('click', function() {
+        if (navContainer.classList.contains('nav-open')) {
+          navContainer.classList.remove('nav-open');
+          setAria(false);
+        }
+      });
+    });
+  })();
+  </script>
+
+  <!-- this weird iframe script was already in your original code; kept as-is -->
+  <script>
+  (function(){function c(){var b=a.contentDocument||a.contentWindow.document;if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'9a438647f5f81099',t:'MTc2NDA5ODY0OC4wMDAwMDA='};var a=document.createElement('script');a.nonce='';a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('iframe');a.height=1;a.width=1;a.style.position='absolute';a.style.top=0;a.style.left=0;a.style.border='none';a.style.visibility='hidden';document.body.appendChild(a);if('loading'!==document.readyState)c();else if(window.addEventListener)document.addEventListener('DOMContentLoaded',c);else{var e=document.onreadystatechange||function(){};document.onreadystatechange=function(b){e(b);'loading'!==document.readyState&&(document.onreadystatechange=e,c())}}}})();
+  </script>
+ </body>
+</html>
